@@ -9,6 +9,10 @@ class values:
     bC = " "
     bR = " "
 
+def main():
+    
+    game()
+
 def printGrid(values):
     print(" %s | %s | %s " % (values.tL, values.tC, values.tR))
     print("-----------")
@@ -173,5 +177,105 @@ def game():
     if(counter < 9 and (counter % 2) == 0):
         print("Player 2 won the game")
 
+def robotMind(values):
+    # s1 (3) | s2 (2) | s3 (3)
+    #-------------------------
+    # s4 (2) | s5 (4) | s6 (2)
+    #-------------------------
+    # s7 (3) | s8 (2) | s9 (3)
 
-game()
+    #Spot values
+    s2, s4, s6, s8, s1, s3, s7, s9, s5 = 0    
+    bestMove = 0
+    highValue = 0
+
+    if values.tL == " ":
+        if values.tC == " " and values.tR == " ":
+            s1 += 8
+        if values.cC == " " and values.bR == " ":
+            s1 += 10
+        if values.cL == " " and values.bL == " ":
+            s1 += 8
+        if s1 > highValue :
+            highValue = s1
+            bestMove = 1
+    if values.tC == " ":
+        if values.tL == " " and values.tR == " ":
+            s2 += 8
+        if values.cC == " " and values.bC == " ":
+            s2 += 8
+        if s2 > highValue :
+            highValue = s2
+            bestMove = 2
+    if values.tR == " ":
+        if values.tC == " " and values.tL == " ":
+            s3 += 8
+        if values.cC == " " and values.bL == " ":
+            s3 += 10
+        if values.cR == " " and values.bR == " ":
+            s3 += 8
+        if s3 > highValue :
+            highValue = s3
+            bestMove = 3
+
+    if values.cL == " ":
+        if values.cC == " " and values.cR == " ":
+            s4 += 8
+        if values.cC == " " and values.bR == " ":
+            s4 += 8
+        if s4 > highValue :
+            highValue = s4
+            bestMove = 4
+    if values.cC == " ":
+        if values.tL == " " and values.bR == " ":
+            s5 += 10
+        if values.tC == " " and values.bC == " ":
+            s5 += 8
+        if values.bL == " " and values.tR == " ":
+            s5 += 10
+        if values.cL == " " and values.cR == " ":
+            s5 += 8
+        if s5 > highValue :
+            highValue = s5
+            bestMove = 5
+    if values.cR == " ":
+        if values.tR == " " and values.bR == " ":
+            s6 += 8
+        if values.cC == " " and values.cL == " ":
+            s6 += 8
+        if s6 > highValue :
+            highValue = s6
+            bestMove = 6
+
+    if values.bL == " ":
+        if values.tL == " " and values.cL == " ":
+            s7 += 8
+        if values.cC == " " and values.tR == " ":
+            s7 += 10
+        if values.bC == " " and values.bL == " ":
+            s7 += 8
+        if s7 > highValue :
+            highValue = s7
+            bestMove = 7
+    if values.bC == " ":
+        if values.bL == " " and values.bR == " ":
+            s8 += 8
+        if values.cC == " " and values.tC == " ":
+            s8 += 8
+        if s8 > highValue :
+            highValue = s8
+            bestMove = 8
+    if values.bR == " ":
+        if values.bL == " " and values.bC == " ":
+            s9 += 8
+        if values.cC == " " and values.tL == " ":
+            s9 += 10
+        if values.cR == " " and values.tR == " ":
+            s9 += 8
+        if s9 > highValue :
+            highValue = s9
+            bestMove = 9
+    
+        
+if __name__ == "__main__":
+    main() 
