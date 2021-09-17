@@ -138,54 +138,23 @@ def entryInput(choice,player,values):
             temp.tR = "O"
         return temp
 
-def game():
-    print("Press enter to play")
-    random =  input()
-    win = False
-    tie = False
-    spots = []
-    entries = values()
-    counter = 0
-    printGrid(entries)
-
-    while (win != True and tie != True) :
-        player = 1
-        choice = turnCollection(player, spots)
-        spots.append(choice)
-        entries = entryInput(choice, player, entries)
-        printGrid(entries)
-        win = winP1(entries)
-        counter += 1
-
-        if (counter == 9):
-            tie = True
-        if (win != True and tie != True):
-            player = 2
-            choice = turnCollection(player, spots)
-            spots.append(choice)
-            entries = entryInput(choice, player, entries)
-            printGrid(entries)
-            win = winP2(entries)
-            counter += 1
-    
-    if (tie == True):
-        print("The game has ended in a tie")
-    
-    if(counter < 9 and (counter % 2) == 1):
-        print("Player 1 won the game")
-    
-    if(counter < 9 and (counter % 2) == 0):
-        print("Player 2 won the game")
-
 def robotMind(values):
-    # s1 (3) | s2 (2) | s3 (3)
+    # s7 (3) | s8 (2) | s9 (3)
     #-------------------------
     # s4 (2) | s5 (4) | s6 (2)
     #-------------------------
-    # s7 (3) | s8 (2) | s9 (3)
+    # s1 (3) | s2 (2) | s3 (3)
 
     #Spot values
-    s2, s4, s6, s8, s1, s3, s7, s9, s5 = 0    
+    s2 = 0
+    s4 = 0
+    s6 = 0
+    s8 = 0
+    s1 = 0
+    s3 = 0
+    s7 = 0
+    s9 = 0
+    s5 = 0    
     bestMove = 0
     highValue = 0
 
@@ -197,16 +166,18 @@ def robotMind(values):
         if values.cL == " " and values.bL == " ":
             s1 += 8
         if s1 > highValue :
-            highValue = s1
-            bestMove = 1
+            highValue = s7
+            bestMove = 7
+        print("space 7 evaluated")
     if values.tC == " ":
         if values.tL == " " and values.tR == " ":
             s2 += 8
         if values.cC == " " and values.bC == " ":
             s2 += 8
         if s2 > highValue :
-            highValue = s2
-            bestMove = 2
+            highValue = s8
+            bestMove = 8
+        print("space 8 evaluated")
     if values.tR == " ":
         if values.tC == " " and values.tL == " ":
             s3 += 8
@@ -215,8 +186,9 @@ def robotMind(values):
         if values.cR == " " and values.bR == " ":
             s3 += 8
         if s3 > highValue :
-            highValue = s3
-            bestMove = 3
+            highValue = s9
+            bestMove = 9
+        print("space 9 evaluated")
 
     if values.cL == " ":
         if values.cC == " " and values.cR == " ":
@@ -226,6 +198,7 @@ def robotMind(values):
         if s4 > highValue :
             highValue = s4
             bestMove = 4
+        print("space 4 evaluated")
     if values.cC == " ":
         if values.tL == " " and values.bR == " ":
             s5 += 10
@@ -238,6 +211,7 @@ def robotMind(values):
         if s5 > highValue :
             highValue = s5
             bestMove = 5
+        print("space 5 evaluated")
     if values.cR == " ":
         if values.tR == " " and values.bR == " ":
             s6 += 8
@@ -246,6 +220,7 @@ def robotMind(values):
         if s6 > highValue :
             highValue = s6
             bestMove = 6
+        print("space 6 evaluated")
 
     if values.bL == " ":
         if values.tL == " " and values.cL == " ":
@@ -255,16 +230,18 @@ def robotMind(values):
         if values.bC == " " and values.bL == " ":
             s7 += 8
         if s7 > highValue :
-            highValue = s7
-            bestMove = 7
+            highValue = s1
+            bestMove = 1
+        print("space 1 evaluated")
     if values.bC == " ":
         if values.bL == " " and values.bR == " ":
             s8 += 8
         if values.cC == " " and values.tC == " ":
             s8 += 8
         if s8 > highValue :
-            highValue = s8
-            bestMove = 8
+            highValue = s2
+            bestMove = 2
+        print("space 2 evaluated")
     if values.bR == " ":
         if values.bL == " " and values.bC == " ":
             s9 += 8
@@ -273,9 +250,90 @@ def robotMind(values):
         if values.cR == " " and values.tR == " ":
             s9 += 8
         if s9 > highValue :
-            highValue = s9
-            bestMove = 9
+            highValue = s3
+            bestMove = 3
+        print("space 3 evaluated")
+
+    print("the chosen spot is %i" %bestMove)
+    return bestMove
+
+def game():
+    mode = 0    
+    while(mode != 1 and mode != 2):
+        print("Press 1 for single player or 2 for two player game")
+        mode = int(input())
+        if (mode != 1 and mode != 2):
+            print("That was an invalid choice. Please enter a 1 or 2")
+            mode = int(input())
     
+    print("Press enter to start")
+    random =  input()
+    win = False
+    tie = False
+    spots = []
+    entries = values()
+    counter = 0
+    printGrid(entries)
+
+    if (mode == 1):
+        while (win != True and tie != True) :
+            player = 1
+            choice = turnCollection(player, spots)
+            spots.append(choice)
+            entries = entryInput(choice, player, entries)
+            printGrid(entries)
+            win = winP1(entries)
+            counter += 1
+
+            if (counter == 9):
+                tie = True
+            if (win != True and tie != True):
+                player = 2
+                choice = robotMind(entries)
+                spots.append(choice)
+                entries = entryInput(choice, player, entries)
+                printGrid(entries)
+                win = winP2(entries)
+                counter += 1
         
+        if (tie == True):
+            print("The game has ended in a tie")
+        
+        if(counter < 9 and (counter % 2) == 1):
+            print("Player 1 won the game")
+        
+        if(counter < 9 and (counter % 2) == 0):
+            print("Computer has won the game")
+
+    if (mode == 2):
+        while (win != True and tie != True) :
+            player = 1
+            choice = turnCollection(player, spots)
+            spots.append(choice)
+            entries = entryInput(choice, player, entries)
+            printGrid(entries)
+            win = winP1(entries)
+            counter += 1
+
+            if (counter == 9):
+                tie = True
+            if (win != True and tie != True):
+                player = 2
+                choice = turnCollection(player, spots)
+                spots.append(choice)
+                entries = entryInput(choice, player, entries)
+                printGrid(entries)
+                win = winP2(entries)
+                counter += 1
+        
+        if (tie == True):
+            print("The game has ended in a tie")
+        
+        if(counter < 9 and (counter % 2) == 1):
+            print("Player 1 won the game")
+        
+        if(counter < 9 and (counter % 2) == 0):
+            print("Player 2 won the game")
+       
 if __name__ == "__main__":
     main() 
