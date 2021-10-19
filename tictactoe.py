@@ -147,8 +147,10 @@ def robotMind(values):
 
     # 1 point value is added per O in the selection
     # 1 point value is subtracted per X in the selection
-    # if two X's in a row, 5 points added for priority
-    # if two O's in a row, 3 points added for priority
+    # if two X's in a row, 10 points added for priority
+    # if two O's in a row, 5 points added for priority
+
+    #
 
     #Spot values
     s2 = 0
@@ -167,193 +169,196 @@ def robotMind(values):
 
     if values.tL == " ":
         if values.tC == " " and values.tR == " ":
-            s1 += 8
+            s7 += 8
         if values.cC == " " and values.bR == " ":
-            s1 += 10
+            s7 += 10
         if values.cL == " " and values.bL == " ":
-            s1 += 8
+            s7 += 8
         
         if values.tC == "O" and values.tR == " ":
-            s1 += 9
+            s7 += 9
         if values.cC == "O" and values.bR == " ":
-            s1 += 11
+            s7 += 11
         if values.cL == "O" and values.bL == " ":
-            s1 += 9
+            s7 += 9
         
         if values.tC == " " and values.tR == "O":
-            s1 += 9
+            s7 += 9
         if values.cC == " " and values.bR == "O":
-            s1 += 11
+            s7 += 11
         if values.cL == " " and values.bL == "O":
-            s1 += 9
+            s7 += 9
         
         if values.tC == "O" and values.tR == "O":
-            s1 += 11
+            s7 += 13
         if values.cC == "O" and values.bR == "O":
-            s1 += 13
+            s7 += 15
         if values.cL == "O" and values.bL == "O":
-            s1 += 11
+            s7 += 13
         
         if values.tC == "X" and values.tR == " ":
-            s1 += 7
+            s7 += 7
         if values.cC == "X" and values.bR == " ":
-            s1 += 9
+            s7 += 9
         if values.cL == "X" and values.bL == " ":
-            s1 += 7
+            s7 += 7
 
         if values.tC == " " and values.tR == "X":
-            s1 += 7
+            s7 += 7
         if values.cC == " " and values.bR == "X":
-            s1 += 9
+            s7 += 9
         if values.cL == " " and values.bL == "X":
-            s1 += 7
+            s7 += 7
 
         if values.tC == "X" and values.tR == "X":
-            s1 += 13
+            s7 += 18
         if values.cC == "X" and values.bR == "X":
-            s1 += 15
+            s7 += 20
         if values.cL == "X" and values.bL == "X":
-            s1 += 13
+            s7 += 18
 
         if values.tC == "O" and values.tR == "X":
-            s1 += 8
+            s7 += 8
         if values.cC == "O" and values.bR == "X":
-            s1 += 10
+            s7 += 10
         if values.cL == "O" and values.bL == "X":
-            s1 += 8
+            s7 += 8
 
         if values.tC == "X" and values.tR == "O":
-            s1 += 8
+            s7 += 8
         if values.cC == "X" and values.bR == "O":
-            s1 += 10
+            s7 += 10
         if values.cL == "X" and values.bL == "O":
-            s1 += 8
+            s7 += 8
 
-        if s1 > highValue :
+        if s7 > highValue :
             highValue = s7
             bestMove = 7
         print("space 7 evaluated")
         print(s7)
+        print("best move: %i" %bestMove)
     if values.tC == " ":
         if values.tL == " " and values.tR == " ":
-            s2 += 8
+            s8 += 8
         if values.cC == " " and values.bC == " ":
-            s2 += 8
+            s8 += 8
 
         if values.tL == "O" and values.tR == " ":
-            s2 += 9
+            s8 += 9
         if values.cC == "O" and values.bC == " ":
-            s2 += 9
+            s8 += 9
         
         if values.tL == " " and values.tR == "O":
-            s2 += 9
+            s8 += 9
         if values.cC == " " and values.bC == "O":
-            s2 += 9
+            s8 += 9
         
         if values.tL == "O" and values.tR == "O":
-            s2 += 11
+            s8 += 13
         if values.cC == "O" and values.bC == "O":
-            s2 += 11
+            s8 += 13
 
         if values.tL == "X" and values.tR == " ":
-            s2 += 7
+            s8 += 7
         if values.cC == "X" and values.bC == " ":
-            s2 += 7
+            s8 += 7
 
         if values.tL == " " and values.tR == "X":
-            s2 += 7
+            s8 += 7
         if values.cC == " " and values.bC == "X":
-            s2 += 7
+            s8 += 7
 
         if values.tL == "X" and values.tR == "X":
-            s2 += 13
+            s8 += 18
         if values.cC == "X" and values.bC == "X":
-            s2 += 13
+            s8 += 18
 
         if values.tL == "X" and values.tR == "O":
-            s2 += 8
+            s8 += 8
         if values.cC == "X" and values.bC == "O":
-            s2 += 8
+            s8 += 8
 
         if values.tL == "O" and values.tR == "X":
-            s2 += 8
+            s8 += 8
         if values.cC == "O" and values.bC == "X":
-            s2 += 8
+            s8 += 8
 
-        if s2 > highValue :
+        if s8 > highValue :
             highValue = s8
             bestMove = 8
         print("space 8 evaluated")
         print(s8)
+        print("best move: %i" %bestMove)
     if values.tR == " ":
         if values.tC == " " and values.tL == " ":
-            s3 += 8
+            s9 += 8
         if values.cC == " " and values.bL == " ":
-            s3 += 10
+            s9 += 10
         if values.cR == " " and values.bR == " ":
-            s3 += 8
+            s9 += 8
 
         if values.tC == "O" and values.tL == " ":
-            s3 += 9
+            s9 += 9
         if values.cC == "O" and values.bL == " ":
-            s3 += 11
+            s9 += 11
         if values.cR == "O" and values.bR == " ":
-            s3 += 9
+            s9 += 9
 
         if values.tC == " " and values.tL == "O":
-            s3 += 9
+            s9 += 9
         if values.cC == " " and values.bL == "O":
-            s3 += 11
+            s9 += 11
         if values.cR == " " and values.bR == "O":
-            s3 += 9
+            s9 += 9
 
         if values.tC == "O" and values.tL == "O":
-            s3 += 11
+            s9 += 14
         if values.cC == "O" and values.bL == "O":
-            s3 += 13
+            s9 += 15
         if values.cR == "O" and values.bR == "O":
-            s3 += 11
+            s9 += 14
 
         if values.tC == "X" and values.tL == " ":
-            s3 += 7
+            s9 += 7
         if values.cC == "X" and values.bL == " ":
-            s3 += 9
+            s9 += 9
         if values.cR == "X" and values.bR == " ":
-            s3 += 7
+            s9 += 7
 
         if values.tC == " " and values.tL == "X":
-            s3 += 7
+            s9 += 7
         if values.cC == " " and values.bL == "X":
-            s3 += 9
+            s9 += 9
         if values.cR == " " and values.bR == "X":
-            s3 += 7
+            s9 += 7
 
         if values.tC == "X" and values.tL == "X":
-            s3 += 13
+            s9 += 18
         if values.cC == "X" and values.bL == "X":
-            s3 += 15
+            s9 += 20
         if values.cR == "X" and values.bR == "X":
-            s3 += 13
+            s9 += 18
 
         if values.tC == "X" and values.tL == "O":
-            s3 += 8
+            s9 += 8
         if values.cC == "X" and values.bL == "O":
-            s3 += 10
+            s9 += 10
         if values.cR == "X" and values.bR == "O":
-            s3 += 8
+            s9 += 8
 
         if values.tC == "O" and values.tL == "X":
-            s3 += 8
+            s9 += 8
         if values.cC == "O" and values.bL == "X":
-            s3 += 10
+            s9 += 10
         if values.cR == "O" and values.bR == "X":
-            s3 += 8
+            s9 += 8
 
-        if s3 > highValue :
+        if s9 > highValue :
             highValue = s9
             bestMove = 9
         print("space 9 evaluated")
         print(s9)
+        print("best move: %i" %bestMove)
 
     if values.cL == " ":
         if values.cC == " " and values.cR == " ":
@@ -372,9 +377,9 @@ def robotMind(values):
             s4 += 9
 
         if values.cC == "O" and values.cR == "O":
-            s4 += 11
+            s4 += 13
         if values.cC == "O" and values.bR == "O":
-            s4 += 11
+            s4 += 13
 
         if values.cC == "X" and values.cR == " ":
             s4 += 7
@@ -387,9 +392,9 @@ def robotMind(values):
             s4 += 7
 
         if values.cC == "X" and values.cR == "X":
-            s4 += 13
+            s4 += 18
         if values.cC == "X" and values.bR == "X":
-            s4 += 13
+            s4 += 18
 
         if values.cC == "X" and values.cR == "O":
             s4 += 8
@@ -406,6 +411,7 @@ def robotMind(values):
             bestMove = 4
         print("space 4 evaluated")
         print(s4)
+        print("best move: %i" %bestMove)
     if values.cC == " ":
         if values.tL == " " and values.bR == " ":
             s5 += 11
@@ -435,13 +441,13 @@ def robotMind(values):
             s5 += 9
 
         if values.tL == "O" and values.bR == "O":
-            s5 += 14
+            s5 += 16
         if values.tC == "O" and values.bC == "O":
-            s5 += 11
+            s5 += 13
         if values.bL == "O" and values.tR == "O":
-            s5 += 14
+            s5 += 16
         if values.cL == "O" and values.cR == "O":
-            s5 += 11
+            s5 += 13
 
         if values.tL == "X" and values.bR == " ":
             s5 += 10
@@ -462,13 +468,13 @@ def robotMind(values):
             s5 += 7
 
         if values.tL == "X" and values.bR == "X":
-            s5 += 16
+            s5 += 21
         if values.tC == "X" and values.bC == "X":
-            s5 += 13
+            s5 += 18
         if values.bL == "X" and values.tR == "X":
-            s5 += 16
+            s5 += 21
         if values.cL == "X" and values.cR == "X":
-            s5 += 13
+            s5 += 18
 
         if values.tL == "X" and values.bR == "O":
             s5 += 11
@@ -493,6 +499,7 @@ def robotMind(values):
             bestMove = 5
         print("space 5 evaluated")
         print(s5)
+        print("best move: %i" %bestMove)
     if values.cR == " ":
         if values.tR == " " and values.bR == " ":
             s6 += 8
@@ -510,9 +517,9 @@ def robotMind(values):
             s6 += 9
 
         if values.tR == "O" and values.bR == "O":
-            s6 += 11
+            s6 += 13
         if values.cC == "O" and values.cL == "O":
-            s6 += 11
+            s6 += 13
 
         if values.tR == "X" and values.bR == " ":
             s6 += 7
@@ -525,9 +532,9 @@ def robotMind(values):
             s6 += 7
 
         if values.tR == "X" and values.bR == "X":
-            s6 += 13
+            s6 += 18
         if values.cC == "X" and values.cL == "X":
-            s6 += 13
+            s6 += 18
 
         if values.tR == "X" and values.bR == "O":
             s6 += 8
@@ -544,196 +551,200 @@ def robotMind(values):
             bestMove = 6
         print("space 6 evaluated")
         print(s6)
+        print("best move: %i" %bestMove)
 
     if values.bL == " ":
         if values.tL == " " and values.cL == " ":
-            s7 += 8
+            s1 += 8
         if values.cC == " " and values.tR == " ":
-            s7 += 10
+            s1 += 10
         if values.bC == " " and values.bL == " ":
-            s7 += 8
+            s1 += 8
 
         if values.tL == "O" and values.cL == " ":
-            s7 += 9
+            s1 += 9
         if values.cC == "O" and values.tR == " ":
-            s7 += 11
+            s1 += 11
         if values.bC == "O" and values.bL == " ":
-            s7 += 9
+            s1 += 9
 
         if values.tL == " " and values.cL == "O":
-            s7 += 9
+            s1 += 9
         if values.cC == " " and values.tR == "O":
-            s7 += 11
+            s1 += 11
         if values.bC == " " and values.bL == "O":
-            s7 += 9
+            s1 += 9
 
         if values.tL == "O" and values.cL == "O":
-            s7 += 11
+            s1 += 13
         if values.cC == "O" and values.tR == "O":
-            s7 += 13
+            s1 += 15
         if values.bC == "O" and values.bL == "O":
-            s7 += 11
+            s1 += 13
 
         if values.tL == "X" and values.cL == " ":
-            s7 += 7
+            s1 += 7
         if values.cC == "X" and values.tR == " ":
-            s7 += 9
+            s1 += 9
         if values.bC == "X" and values.bL == " ":
-            s7 += 7
+            s1 += 7
 
         if values.tL == " " and values.cL == "X":
-            s7 += 7
+            s1 += 7
         if values.cC == " " and values.tR == "X":
-            s7 += 9
+            s1 += 9
         if values.bC == " " and values.bL == "X":
-            s7 += 7
+            s1 += 7
 
         if values.tL == "X" and values.cL == "X":
-            s7 += 13
+            s1 += 18
         if values.cC == "X" and values.tR == "X":
-            s7 += 15
+            s1 += 20
         if values.bC == "X" and values.bL == "X":
-            s7 += 13
+            s1 += 18
 
         if values.tL == "X" and values.cL == "O":
-            s7 += 8
+            s1 += 8
         if values.cC == "X" and values.tR == "O":
-            s7 += 10
+            s1 += 10
         if values.bC == "X" and values.bL == "O":
-            s7 += 8
+            s1 += 8
 
         if values.tL == "O" and values.cL == "X":
-            s7 += 8
+            s1 += 8
         if values.cC == "O" and values.tR == "X":
-            s7 += 10
+            s1 += 10
         if values.bC == "O" and values.bL == "X":
-            s7 += 8
+            s1 += 8
 
-        if s7 > highValue :
+        if s1 > highValue :
             highValue = s1
             bestMove = 1
         print("space 1 evaluated")
         print(s1)
+        print("best move: %i" %bestMove)
     if values.bC == " ":
         if values.bL == " " and values.bR == " ":
-            s8 += 8
+            s2 += 8
         if values.cC == " " and values.tC == " ":
-            s8 += 8
+            s2 += 8
 
         if values.bL == "O" and values.bR == " ":
-            s8 += 8
+            s2 += 9
         if values.cC == "O" and values.tC == " ":
-            s8 += 8
+            s2 += 9
 
         if values.bL == " " and values.bR == "O":
-            s8 += 8
+            s2 += 9
         if values.cC == " " and values.tC == "O":
-            s8 += 8
+            s2 += 9
 
         if values.bL == "O" and values.bR == "O":
-            s8 += 8
+            s2 += 13
         if values.cC == "O" and values.tC == "O":
-            s8 += 8
+            s2 += 13
 
         if values.bL == "X" and values.bR == " ":
-            s8 += 8
+            s2 += 7
         if values.cC == "X" and values.tC == " ":
-            s8 += 8
+            s2 += 7
 
         if values.bL == " " and values.bR == "X":
-            s8 += 8
+            s2 += 7
         if values.cC == " " and values.tC == "X":
-            s8 += 8
+            s2 += 7
 
         if values.bL == "X" and values.bR == "X":
-            s8 += 8
+            s2 += 18
         if values.cC == "X" and values.tC == "X":
-            s8 += 8
+            s2 += 18
 
         if values.bL == "X" and values.bR == "O":
-            s8 += 8
+            s2 += 8
         if values.cC == "X" and values.tC == "O":
-            s8 += 8
+            s2 += 8
 
         if values.bL == "O" and values.bR == "X":
-            s8 += 8
+            s2 += 8
         if values.cC == "O" and values.tC == "X":
-            s8 += 8
+            s2 += 8
 
-        if s8 > highValue :
+        if s2 > highValue :
             highValue = s2
             bestMove = 2
         print("space 2 evaluated")
         print(s2)
+        print("best move: %i" %bestMove)
     if values.bR == " ":
         if values.bL == " " and values.bC == " ":
-            s9 += 8
+            s3 += 8
         if values.cC == " " and values.tL == " ":
-            s9 += 10
+            s3 += 10
         if values.cR == " " and values.tR == " ":
-            s9 += 8
+            s3 += 8
 
         if values.bL == "O" and values.bC == " ":
-            s9 += 8
+            s3 += 9
         if values.cC == "O" and values.tL == " ":
-            s9 += 10
+            s3 += 11
         if values.cR == "O" and values.tR == " ":
-            s9 += 8
+            s3 += 9
 
         if values.bL == " " and values.bC == "O":
-            s9 += 8
+            s3 += 9
         if values.cC == " " and values.tL == "O":
-            s9 += 10
+            s3 += 11
         if values.cR == " " and values.tR == "O":
-            s9 += 8
+            s3 += 9
 
         if values.bL == "O" and values.bC == "O":
-            s9 += 8
+            s3 += 13
         if values.cC == "O" and values.tL == "O":
-            s9 += 10
+            s3 += 15
         if values.cR == "O" and values.tR == "O":
-            s9 += 8
+            s3 += 13
 
         if values.bL == "X" and values.bC == " ":
-            s9 += 8
+            s3 += 7
         if values.cC == "X" and values.tL == " ":
-            s9 += 10
+            s3 += 9
         if values.cR == "X" and values.tR == " ":
-            s9 += 8
+            s3 += 7
 
         if values.bL == " " and values.bC == "X":
-            s9 += 8
+            s3 += 7
         if values.cC == " " and values.tL == "X":
-            s9 += 10
+            s3 += 9
         if values.cR == " " and values.tR == "X":
-            s9 += 8
+            s3 += 7
 
         if values.bL == "X" and values.bC == "X":
-            s9 += 8
+            s3 += 18
         if values.cC == "X" and values.tL == "X":
-            s9 += 10
+            s3 += 20
         if values.cR == "X" and values.tR == "X":
-            s9 += 8
+            s3 += 18
 
         if values.bL == "X" and values.bC == "O":
-            s9 += 8
+            s3 += 8
         if values.cC == "X" and values.tL == "O":
-            s9 += 10
+            s3 += 10
         if values.cR == "X" and values.tR == "O":
-            s9 += 8
+            s3 += 8
 
         if values.bL == "O" and values.bC == "X":
-            s9 += 8
+            s3 += 8
         if values.cC == "O" and values.tL == "X":
-            s9 += 10
+            s3 += 10
         if values.cR == "O" and values.tR == "X":
-            s9 += 8
+            s3 += 8
         
-        if s9 > highValue :
+        if s3 > highValue :
             highValue = s3
             bestMove = 3
         print("space 3 evaluated")
         print(s3)
+        print("best move: %i" %bestMove)
 
     print("the chosen spot is %i" %bestMove)
     return bestMove
